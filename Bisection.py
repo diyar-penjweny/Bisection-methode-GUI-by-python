@@ -8,7 +8,7 @@ def bisectionMethod(a,b,E=0.000001):
     else:
         counter = 0
 
-        while abs(b-a)>E:
+        while abs(f(b)-f(a))>E:
             counter += 1
             mid = (a+b)/2
             if f(mid)==0:   #ئەگەر ژمارەکە نەخشەکەی کرد بە سفر ئەوا لووپەکە ئەوەستێ و ئەنجامەکەمان بۆ ئەهێنێتەوە
