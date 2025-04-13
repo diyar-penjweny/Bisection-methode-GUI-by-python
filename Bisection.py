@@ -1,25 +1,30 @@
 def f(x):
-    return  (x**3 - x - 2)
+    return x**3 - x - 2
 
-def bisectionMethod(a,b,E=0.000001):
-    if f(a)*f(b)>0:   #ئەگەر f(a) و f(b)ئەنجامەکانیان نیشانەکانی جیاواز نەبێ ئەوا لێگدانیان هەمیشە ئەکاتە موجەب
-        print(f"There is no number between {a} and {b} that makes the function zero")
+def bisectionMethod(a, b, E=0.000001):
 
-    else:
-        counter = 0
+    if f(a) * f(b) > 0:
+        print(f"There is no root between {a} and {b} (f(a) and f(b) have the same sign)")
+        return None
+    
 
-        while abs(f(b)-f(a))>E:
-            counter += 1
-            mid = (a+b)/2
-            if f(mid)==0:   #ئەگەر ژمارەکە نەخشەکەی کرد بە سفر ئەوا لووپەکە ئەوەستێ و ئەنجامەکەمان بۆ ئەهێنێتەوە
-                return mid
-            elif f(a)*f(mid)>0:     #ب ئەگەر f(a) و f(mid)ئەنجامەکانیان نیشانەکانی جیاواز نەبێ ئەوا لێگدانیان هەمیشە ئەکاتە موجەب بۆیە ئەبێ نرخی a بکەین بە نرخی mid
-                a = mid
-            else:
-                b = mid
-        return mid
+    if f(a) == 0:
+        return a
+    if f(b) == 0:
+        return b
+
+    counter = 0
+    while (b - a) > E:  
+        counter += 1
+        mid = (a + b) / 2
+        if f(mid) == 0:
+            return mid
+        elif f(a) * f(mid) < 0: 
+            b = mid
+        else: 
+            a = mid
+    
+    return (a + b) / 2 
+
 
 print(bisectionMethod(1,2))
-
-
-
